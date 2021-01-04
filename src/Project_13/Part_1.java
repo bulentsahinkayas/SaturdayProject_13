@@ -12,17 +12,18 @@ public class Part_1 {
 
         driver.findElement(By.id("userName")).sendKeys("Automation");
         driver.findElement(By.id("userEmail")).sendKeys("Testing@gmail.com");
-        driver.findElement(By.id("currentAddress")).sendKeys("Testing Current Address");
-        driver.findElement(By.id("permanentAddress")).sendKeys("Testing Permanent Address");
+        driver.findElements(By.id("currentAddress")).get(0).sendKeys("Testing Current Address");
+//        driver.findElement(By.id("currentAddress")).sendKeys("Testing Current Address");
+        driver.findElements(By.id("permanentAddress")).get(0).sendKeys("Testing Permanent Address");
         driver.findElement(By.id("submit")).click();
 
         String name = driver.findElement(By.id("name")).getText();
         System.out.println(name);
         String email = driver.findElement(By.id("email")).getText();
         System.out.println(email);
-        String currentAddress = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[2]/div[1]/form/div[6]/div/p[3]")).getText();
+        String currentAddress = driver.findElements(By.id("currentAddress")).get(1).getText();
         System.out.println(currentAddress);
-        String permanentAddress = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[2]/div[1]/form/div[6]/div/p[4]")).getText();
+        String permanentAddress = driver.findElements(By.id("permanentAddress")).get(1).getText();
         System.out.println(permanentAddress);
 
         driver.quit();

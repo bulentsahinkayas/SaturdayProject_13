@@ -10,21 +10,33 @@ public class Part_3 {
         System.setProperty("webdriver.chrome.driver",MyConstant.DRIVER_PATH);
         WebDriver driver = new ChromeDriver();
 
+        //1
         driver.get("https://www.snapdeal.com/");
+        //2
         driver.manage().window().maximize();
-
+        //3
         driver.findElement(By.id("inputValEnter")).sendKeys("teddy bear");
-        driver.findElement(By.xpath("//*[@id=\"sdHeader\"]/div[4]/div[2]/div/div[2]/button/span")).click();
-        System.out.println(driver.getCurrentUrl());
-
-        driver.findElement(By.xpath("//*[@id=\"sdHeader\"]/div[4]/div[2]/div/div[1]/a[1]/img")).click();
-        System.out.println(driver.getCurrentUrl());
-        driver.navigate().back();
-
-
-        WebElement element = driver.findElement(By.id("inputValEnter"));
-        String valElement = element.getAttribute("value");
+        driver.findElements(By.cssSelector("button span")).get(0).click();
+        //4
+        WebElement element = driver.findElements(By.cssSelector("#searchMessageContainer div span")).get(0);
+        String valElement = element.getText();
         System.out.println(valElement);
+        //5
+        System.out.println(driver.getCurrentUrl());
+        //6
+        driver.findElement(By.cssSelector("a.notIeLogoHeader > img")).click();
+
+        //7
+        System.out.println(driver.getCurrentUrl());
+        //8
+        driver.navigate().back();
+        element = driver.findElement(By.id("inputValEnter"));
+        String text = element.getAttribute("value");
+        System.out.println(text);
+
+
+
+        driver.quit();
     }
 }
     /*
